@@ -1,41 +1,44 @@
-var express = require('express');
-var router = express.Router();
-const nodemailer = require('nodemailer');
+const express = require('express')
+const nodemailer = require('nodemailer')
+const { getMaxListeners } = require('../app')
+const router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) { //the router shouldn't be changed. cause contact is root for contact own
-  res.render('contact', { title: 'Contact Us' });
-});
-
-// post
-router.post('/send', (req, res) =>{
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure: false,
-    auth: {
-      user: 'abjalil1962@gmail.com',
-      pass: 'jalil1962'
-    }
-  });
-
-  let mailOptions = {
-    from: 'Buggy Bees <abjalil1962@gmail.com>',
-    to: 'tahmidkhandokar7788@gmail.com',
-    subject: 'website submission',
-    text: 'You have a new submission with the following details...Name: '+req.body.name+'Email: '+req.body.email+'Message: '+req.body.message+'',
-    html: '<p>You got a new submission with the following details...</p><ul><li>Name: '+req.body.name+'</li><li>Email: '+req.body.email+'</li><li>Message: '+req.body.message+'</li></ul>'
-
-  };
-
-  transporter.sendMail(mailOptions, (error, info)=>{
-    if(error){
-      console.log(error);
-      res.redirect('/');
-    }else{
-      console.log('Message sent successfully: '+info.response);
-      res.redirect('/');
-    }
-  })
+router.get('/', (req, res) => {
+    res.render('contact', {title: 'Contact'})
 })
 
-module.exports = router;
+router.post('/send', (req, res) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        secure: 'false',
+        auth: {
+            user: 'techtoon526628@gmail.com',
+            pass: '#526628Tuples!Tahmid$'
+        }
+    })
+
+    let mailOptions = {
+        from: 'TechToon <techtoon526628@gmail.com>',
+        to: 'tahmidkhandokar82@gmail.com',
+        subject: 'website submission',
+        text: 'You have got a website submission',
+        html: '<p>You\'ve got a website submission with the following details....'+
+            '<ul><li>Name: ' + req.body.name + '</li>'+
+            '<li>Email: ' + req.body.email + '</li>'+
+            '<li>Message: ' + req.body.message + '</li></ul>'+
+            '</p>'
+    }
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        if(err){
+            console.log(err)
+            res.send("500! Try again letter")
+        }
+        else{
+            res.redirect('/')
+            console.log(info)
+        }
+    })
+})
+
+module.exports = router

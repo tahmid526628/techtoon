@@ -1,19 +1,21 @@
 extends layout
 
 block content
+    br
     .container
-        form(method='post', action='contact/send')
+        form(action='/contact/send', method='post')
             h1 Contact Us
             .form-group
                 label Name
-                input.form-control(type='text', name='name', placeholder='Enter Name')
+                input.form-control(type='text', name='name', placeholder='Enter full name')
             .form-group
                 label Email
-                input.form-control(type='email', name='email', placeholder='Enter Email')
+                input.form-control(type='email', name='email', placeholder='Enter email')
             .form-group
                 label Message
                 textarea.form-control(name='message', placeholder='Enter message...')
             br
-            button.btn.btn-primary(type='submit') Submit
+            button.btn.btn-deafult.btn-dark.text-white(type='submit') Send
+
 
 

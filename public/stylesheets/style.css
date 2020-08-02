@@ -7,15 +7,22 @@ a {
   color: #00B7FF;
 }
 
+footer{
+  background-color: #f4f4f4;
+  height: 50px;
+  margin-top: 30px;
+  padding: 10px 0;
+  text-align: center;
+  overflow: auto;
+  font-size: 1.2rem;
+}
+
+
 .jumbotron{
   background: url(../images/jumbotron-bg.jpg) no-repeat;
 }
 
-footer{
-  background: #f4f4f4;
-  height: 50px;
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 10px;
-  overflow: auto;
+img{
+  width: 100%;
+  height: 200px;
 }
