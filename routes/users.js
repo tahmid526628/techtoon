@@ -125,7 +125,7 @@ passport.authenticate('local', {failureFlash: 'Invalid username and password', f
 (req, res, next) => {
   req.flash('success', 'You have logged in successfully')
   console.log('successfully logged in')
-  res.redirect('/members')
+  res.redirect('/members/'+req.body.username)
 })
 
 router.get('/logout', (req, res, next) => {

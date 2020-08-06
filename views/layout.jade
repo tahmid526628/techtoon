@@ -17,7 +17,7 @@ html
             a.nav-link(href='/') Home 
           if user
             li.nav-item(class=(title === 'Members' ? 'active' : ''))
-                a.nav-link(href='/members') Members
+                a.nav-link(href='/members/' + user.username) Members
           if !user
             li.nav-item(class=(title === 'Register' ? 'active' : ''))
                 a.nav-link(href='/users/register') Register
