@@ -15,20 +15,30 @@ html
         ul.navbar-nav.mr-auto
           li.nav-item(class=(title === 'home' ? 'active' : ''))
             a.nav-link(href='/') Home 
+          if user
+            li.nav-item(class=(title === 'Members' ? 'active' : ''))
+                a.nav-link(href='/members') Members
+          if !user
+            li.nav-item(class=(title === 'Register' ? 'active' : ''))
+                a.nav-link(href='/users/register') Register
+            li.nav-item(class=(title === 'Login' ? 'active' : ''))
+                a.nav-link(href='/users/login') Login
           li.nav-item(class=(title === 'About Us' ? 'active' : ''))
-              a.nav-link(href='about') About Us
+              a.nav-link(href='/about') About Us
           li.nav-item(class=(title === 'Contact' ? 'active' : ''))
-              a.nav-link(href='contact') Contact
-           li.nav-item(class=(title === 'Dropdown' ? 'active' : ''))
-              a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
-           li.nav-item.dropdown
-              a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Dropdown
-              .dropdown-menu(aria-labelledby='dropdown01')
-                a.dropdown-item(href='#') Action
-                a.dropdown-item(href='#') Another action
-                a.dropdown-item(href='#') Something else here
-
-    block content
+              a.nav-link(href='/contact') Contact Us
+        if user
+          ul.nav.navbar-nav.navbar-right
+            li.nav-item(class=(title === 'Logout' ? 'active' : ''))
+              a.nav-link(href='/users/logout') Logout
+    br
+    .container
+      != messages('my_message_template.jade', locals)
+      //- eta use er jonno obosshoi express-messages include korar shomoy
+      //- res.locals.messages = require('express-messages')(req, res)
+      //- evabe likhte hobe
+      block content
+    br
     footer
       &copy; TechToon, 2020
 

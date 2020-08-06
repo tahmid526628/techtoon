@@ -4,7 +4,7 @@ const { getMaxListeners } = require('../app')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.render('contact', {title: 'Contact'})
+    res.render('contact', {title: 'Contact', user: req.user})
 })
 
 router.post('/send', (req, res) => {
@@ -18,8 +18,8 @@ router.post('/send', (req, res) => {
     })
 
     let mailOptions = {
-        from: 'TechToon <techtoon526628@gmail.com>',
-        to: 'tahmidkhandokar82@gmail.com',
+        from: req.body.email,
+        to: 'TechToon <techtoon526628@gmail.com>',
         subject: 'website submission',
         text: 'You have got a website submission',
         html: '<p>You\'ve got a website submission with the following details....'+
