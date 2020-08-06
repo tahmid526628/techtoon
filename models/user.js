@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 mongoose.connect("mongodb+srv://tahmid:526628Tahmid@test1.mbzeo.mongodb.net/techtoon?retryWrites=true&w=majority")
 const db = mongoose.connection
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 
 // const MongoClient = require('mongodb').MongoClient;
